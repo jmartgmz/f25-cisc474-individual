@@ -2,7 +2,9 @@
 
 ## User Roles & Stories Overview
 
+
 ### 1. Students
+---
 
 #### Course Management
 As a student,
@@ -31,7 +33,9 @@ I want to view my achievement badges and study streaks so I can stay motivated
 
 I want to access course materials and resources so I can study effectively
 
+
 ### 2. Instructors
+---
 
 #### Course & Content Management
 As an instructor, 
@@ -61,7 +65,9 @@ I want to host videos where students can learn more so I can facilitate interact
 
 I want to send announcements and messages to students so I can communicate important information
 
+
 ### 3. Administrators
+---
 
 #### System Management
 As an admin,
