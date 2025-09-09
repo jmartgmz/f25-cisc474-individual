@@ -12,9 +12,7 @@ flowchart TD
     C --> CH
     CH --> AL[Assignment List]
     AL --> AP[Assignment Page]
-    AP --> PV[Problem View]
-    PV --> SUB[Submit]
-    SUB --> RES[Results]
+    AP --> SUB[Submit]
     
     ID --> IC[Instructor Course Home]
     ID --> NA[New Assignment]
