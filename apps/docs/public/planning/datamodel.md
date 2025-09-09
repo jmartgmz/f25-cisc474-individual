@@ -48,6 +48,7 @@ erDiagram
         datetime gradedAt
     }
     
+    %% This part below was generated with help of ChatGPT given instructions on which receives which
     
     USER ||--o{ COURSE : "instructs"
     USER ||--o{ SUBMISSION : "submits"
