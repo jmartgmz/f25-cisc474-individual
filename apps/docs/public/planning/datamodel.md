@@ -1,3 +1,4 @@
+```mermaid
 erDiagram
     USER {
         string id
@@ -63,3 +64,4 @@ erDiagram
     
     GRADE }o--|| USER : "student"
     GRADE }o--|| ASSIGNMENT : "assignment"
+```
