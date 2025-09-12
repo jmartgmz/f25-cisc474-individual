@@ -7,22 +7,19 @@ export default function Header() {
       <nav className={styles.nav}>
         <ul className={styles.navLinks}>
           <li>
-            <Link href="/courses">User</Link>
+            <Link href="/user">User Profile</Link>
           </li>
           <li>
-            <Link href="/instructors">Home</Link>
+            <Link href="/">Home</Link>
           </li>
           <li>
-            <Link href="/admin">Courses</Link>
+            <Link href="/courses">Courses</Link>
           </li>
           <li>
-            <Link href="/admin">Admin Dash</Link>
+            <Link href="/instructor">Instructor</Link>
           </li>
           <li>
-            <Link href="/admin">Instructor Dash</Link>
-          </li>
-          <li>
-            <Link href="/admin">Help</Link>
+            <Link href="/admin">Admin</Link>
           </li>
         </ul>
       </nav>
