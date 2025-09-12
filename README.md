@@ -2,6 +2,10 @@
 
 A repo that you can fork to make new projects
 
+Frontend: https://jsonwebcisc474.vercel.app/
+Backend: https://f25-cisc474-individual-ae3f.onrender.com/
+Repo: https://github.com/jmartgmz/f25-cisc474-individual
+
 # Setup
 
 - Clone this repo
