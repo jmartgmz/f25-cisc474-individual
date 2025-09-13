@@ -1,0 +1,63 @@
+.userContainer {
+  min-height: calc(100vh - var(--header-height, 60px) - var(--footer-height, 40px));
+  padding: 2rem;
+}
+
+.pageTitle {
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.profileSection {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.userInfo {
+  padding: 1.5rem;
+  border: 1px solid #222;
+}
+
+.avatar {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  background-color: #ddd;
+}
+
+.userName {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.userDetail {
+  margin-bottom: 0.5rem;
+}
+
+.statsSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1rem;
+}
+
+.statCard {
+  padding: 1rem;
+  border: 1px solid #222;
+  text-align: center;
+}
+
+.statValue {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.statLabel {
+  color: #444;
+}

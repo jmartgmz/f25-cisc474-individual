@@ -1,0 +1,42 @@
+.coursesContainer {
+  min-height: calc(100vh - var(--header-height, 60px) - var(--footer-height, 40px));
+  padding: 2rem;
+}
+
+.pageTitle {
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.coursesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.courseCard {
+  padding: 1.5rem;
+  border: 1px solid #222;
+}
+
+.courseTitle {
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.courseInfo {
+  margin-bottom: 0.5rem;
+  color: #444;
+}
+
+.enrollButton {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #222;
+  color: white;
+  text-align: center;
+  cursor: pointer;
+}
