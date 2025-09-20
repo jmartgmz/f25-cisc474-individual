@@ -1,0 +1,5 @@
+id,title,description,courseId,type,maxPoints,dueDate,isPublished,createdAt,updatedAt
+cmfrjkdi10014q9v9rmy5lhnx,React Todo App,"Build a complete todo application using React hooks and local storage. The app should support adding, editing, deleting, and marking todos as complete.",cmfrjkcg7000aq9v9da0r5pp3,CODE_EXECUTION,100,2025-10-15 00:00:00,true,2025-09-20 00:39:55.226,2025-09-20 00:39:55.226
+cmfrjkdl20016q9v9eobdv784,Database Design Project,Design and implement a database schema for a library management system. Include ER diagrams and sample queries.,cmfrjkcg7000aq9v9da0r5pp3,FILE,150,2025-11-01 00:00:00,true,2025-09-20 00:39:55.335,2025-09-20 00:39:55.335
+cmfrjkdnt0018q9v9qaqoqheq,Binary Search Implementation,Implement binary search algorithm and analyze its time complexity.,cmfrjkcht000cq9v98ojht1c7,CODE_EXECUTION,75,2025-10-10 00:00:00,true,2025-09-20 00:39:55.433,2025-09-20 00:39:55.433
+cmfrjkdqq001aq9v9o98hcs56,Algorithm Analysis Essay,"Write a comparative analysis of sorting algorithms including bubble sort, merge sort, and quicksort.",cmfrjkcht000cq9v98ojht1c7,TEXT,100,2025-10-25 00:00:00,true,2025-09-20 00:39:55.538,2025-09-20 00:39:55.538

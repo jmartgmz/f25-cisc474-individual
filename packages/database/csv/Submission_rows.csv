@@ -1,0 +1,93 @@
+id,assignmentId,userId,content,codeLanguage,executionResult,status,grade,submittedAt,createdAt,updatedAt
+cmfrjkdti001cq9v9dq7mh3if,cmfrjkdi10014q9v9rmy5lhnx,cmfrjkc6v0003q9v9j6dy3foy,"import React, { useState, useEffect } from 'react';
+
+function TodoApp() {
+  const [todos, setTodos] = useState([]);
+  const [input, setInput] = useState('');
+
+  useEffect(() => {
+    const saved = localStorage.getItem('todos');
+    if (saved) {
+      setTodos(JSON.parse(saved));
+    }
+  }, []);
+
+  const addTodo = () => {
+    if (input.trim()) {
+      const newTodos = [...todos, { id: Date.now(), text: input, completed: false }];
+      setTodos(newTodos);
+      localStorage.setItem('todos', JSON.stringify(newTodos));
+      setInput('');
+    }
+  };
+
+  return (
+    <div>
+      <h1>Todo App</h1>
+      <input value={input} onChange={(e) => setInput(e.target.value)} />
+      <button onClick={addTodo}>Add Todo</button>
+      {todos.map(todo => (
+        <div key={todo.id}>{todo.text}</div>
+      ))}
+    </div>
+  );
+}
+
+export default TodoApp;",javascript,Code runs successfully. UI renders correctly with basic functionality implemented.,GRADED,85,2025-10-14 00:00:00,2025-09-20 00:39:55.638,2025-09-20 00:39:55.638
+cmfrjkdv2001eq9v91g7bdocf,cmfrjkdi10014q9v9rmy5lhnx,cmfrjkc8h0004q9v9hgszuki4,"// Basic todo app - work in progress
+import React from 'react';
+
+function App() {
+  return <div>Hello World</div>;
+}",javascript,,SUBMITTED,,2025-10-15 00:00:00,2025-09-20 00:39:55.695,2025-09-20 00:39:55.695
+cmfrjkdwm001gq9v9hv5tsn25,cmfrjkdnt0018q9v9qaqoqheq,cmfrjkca00005q9v953lwk5eu,"def binary_search(arr, target):
+    left, right = 0, len(arr) - 1
+    
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid
+        elif arr[mid] < target:
+            left = mid + 1
+        else:
+            right = mid - 1
+    
+    return -1
+
+# Test cases
+test_array = [1, 3, 5, 7, 9, 11, 13]
+print(binary_search(test_array, 7))  # Should return 3
+print(binary_search(test_array, 4))  # Should return -1",python,"3
+-1
+All test cases passed. Time complexity: O(log n)",GRADED,95,2025-10-09 00:00:00,2025-09-20 00:39:55.75,2025-09-20 00:39:55.75
+cmfrjkdy8001iq9v9u5dltayt,cmfrjkdqq001aq9v9o98hcs56,cmfrjkcbj0006q9v91xif0dxg,"# Comparative Analysis of Sorting Algorithms
+
+## Introduction
+This essay compares three fundamental sorting algorithms: bubble sort, merge sort, and quicksort, analyzing their time complexity, space complexity, and practical applications.
+
+## Bubble Sort
+Bubble sort is the simplest sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.
+
+**Time Complexity:** O(n²) in worst and average cases, O(n) in best case
+**Space Complexity:** O(1)
+**Pros:** Simple to understand and implement
+**Cons:** Inefficient for large datasets
+
+## Merge Sort
+Merge sort follows the divide-and-conquer approach, dividing the array into halves, sorting them separately, and then merging them.
+
+**Time Complexity:** O(n log n) in all cases
+**Space Complexity:** O(n)
+**Pros:** Stable, predictable performance
+**Cons:** Uses additional memory
+
+## Quicksort
+Quicksort picks a 'pivot' element and partitions the array around the pivot.
+
+**Time Complexity:** O(n log n) average case, O(n²) worst case
+**Space Complexity:** O(log n) average case
+**Pros:** In-place sorting, generally faster than other O(n log n) algorithms
+**Cons:** Worst-case performance can be poor
+
+## Conclusion
+The choice of sorting algorithm depends on the specific requirements of the application, including data size, memory constraints, and stability requirements.",,,SUBMITTED,,2025-10-24 00:00:00,2025-09-20 00:39:55.809,2025-09-20 00:39:55.809

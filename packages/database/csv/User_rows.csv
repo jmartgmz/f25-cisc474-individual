@@ -1,0 +1,10 @@
+id,name,email,emailVerified,role,createdAt,updatedAt
+cmfrjkc1v0000q9v9zyo6zkxw,Dr. Sarah Johnson,sarah.johnson@university.edu,,INSTRUCTOR,2025-09-20 00:39:53.348,2025-09-20 00:39:53.348
+cmfrjkc3i0001q9v96fai6z20,Prof. Michael Chen,michael.chen@university.edu,,INSTRUCTOR,2025-09-20 00:39:53.406,2025-09-20 00:39:53.406
+cmfrjkc580002q9v9jy7pl329,Admin User,admin@university.edu,,ADMIN,2025-09-20 00:39:53.469,2025-09-20 00:39:53.469
+cmfrjkc6v0003q9v9j6dy3foy,Alice Thompson,alice.thompson@student.edu,,STUDENT,2025-09-20 00:39:53.527,2025-09-20 00:39:53.527
+cmfrjkc8h0004q9v9hgszuki4,Bob Martinez,bob.martinez@student.edu,,STUDENT,2025-09-20 00:39:53.585,2025-09-20 00:39:53.585
+cmfrjkca00005q9v953lwk5eu,Charlie Wilson,charlie.wilson@student.edu,,STUDENT,2025-09-20 00:39:53.64,2025-09-20 00:39:53.64
+cmfrjkcbj0006q9v91xif0dxg,Diana Lee,diana.lee@student.edu,,STUDENT,2025-09-20 00:39:53.696,2025-09-20 00:39:53.696
+cmfrjkcd20007q9v9n5vlhqnd,Eva Rodriguez,eva.rodriguez@student.edu,,STUDENT,2025-09-20 00:39:53.751,2025-09-20 00:39:53.751
+cmfrjkceo0008q9v9mzp7ice3,Frank Kim,frank.kim@student.edu,,STUDENT,2025-09-20 00:39:53.809,2025-09-20 00:39:53.809

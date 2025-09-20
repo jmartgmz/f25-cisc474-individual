@@ -1,0 +1,4 @@
+id,title,description,code,semester,instructorId,isActive,createdAt,updatedAt
+cmfrjkcg7000aq9v9da0r5pp3,Web Application Development,"Learn to build modern web applications using React, Node.js, and databases.",CISC474,Fall 2025,cmfrjkc1v0000q9v9zyo6zkxw,true,2025-09-20 00:39:53.864,2025-09-20 00:39:53.864
+cmfrjkcht000cq9v98ojht1c7,Data Structures and Algorithms,Fundamental data structures and algorithmic problem solving.,CISC320,Fall 2025,cmfrjkc3i0001q9v96fai6z20,true,2025-09-20 00:39:53.921,2025-09-20 00:39:53.921
+cmfrjkcjc000eq9v9xg4blpwe,Machine Learning Basics,Introduction to machine learning concepts and applications.,CISC483,Spring 2025,cmfrjkc1v0000q9v9zyo6zkxw,false,2025-09-20 00:39:53.976,2025-09-20 00:39:53.976
