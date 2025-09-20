@@ -1,0 +1,29 @@
+[
+  {
+    "courseCode": "CISC474",
+    "students": [
+      "alice.thompson@student.edu",
+      "bob.martinez@student.edu",
+      "charlie.wilson@student.edu",
+      "diana.lee@student.edu",
+      "eva.rodriguez@student.edu",
+      "frank.kim@student.edu"
+    ]
+  },
+  {
+    "courseCode": "CISC320",
+    "students": [
+      "alice.thompson@student.edu",
+      "bob.martinez@student.edu",
+      "charlie.wilson@student.edu",
+      "diana.lee@student.edu"
+    ]
+  },
+  {
+    "courseCode": "CISC483",
+    "students": [
+      "alice.thompson@student.edu",
+      "bob.martinez@student.edu"
+    ]
+  }
+]

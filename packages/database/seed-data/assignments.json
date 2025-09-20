@@ -1,0 +1,38 @@
+[
+  {
+    "title": "React Todo App",
+    "description": "Build a complete todo application using React hooks and local storage. The app should support adding, editing, deleting, and marking todos as complete.",
+    "courseCode": "CISC474",
+    "type": "CODE_EXECUTION",
+    "maxPoints": 100,
+    "dueDate": "2025-10-15T00:00:00.000Z",
+    "isPublished": true
+  },
+  {
+    "title": "Database Design Project",
+    "description": "Design and implement a database schema for a library management system. Include ER diagrams and sample queries.",
+    "courseCode": "CISC474",
+    "type": "FILE",
+    "maxPoints": 150,
+    "dueDate": "2025-11-01T00:00:00.000Z",
+    "isPublished": true
+  },
+  {
+    "title": "Binary Search Implementation",
+    "description": "Implement binary search algorithm and analyze its time complexity.",
+    "courseCode": "CISC320",
+    "type": "CODE_EXECUTION",
+    "maxPoints": 75,
+    "dueDate": "2025-10-10T00:00:00.000Z",
+    "isPublished": true
+  },
+  {
+    "title": "Algorithm Analysis Essay",
+    "description": "Write a comparative analysis of sorting algorithms including bubble sort, merge sort, and quicksort.",
+    "courseCode": "CISC320",
+    "type": "TEXT",
+    "maxPoints": 100,
+    "dueDate": "2025-10-25T00:00:00.000Z",
+    "isPublished": true
+  }
+]

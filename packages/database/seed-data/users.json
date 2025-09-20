@@ -1,0 +1,47 @@
+[
+  {
+    "name": "Dr. Sarah Johnson",
+    "email": "sarah.johnson@university.edu",
+    "role": "INSTRUCTOR"
+  },
+  {
+    "name": "Prof. Michael Chen",
+    "email": "michael.chen@university.edu",
+    "role": "INSTRUCTOR"
+  },
+  {
+    "name": "Admin User",
+    "email": "admin@university.edu",
+    "role": "ADMIN"
+  },
+  {
+    "name": "Alice Thompson",
+    "email": "alice.thompson@student.edu",
+    "role": "STUDENT"
+  },
+  {
+    "name": "Bob Martinez",
+    "email": "bob.martinez@student.edu",
+    "role": "STUDENT"
+  },
+  {
+    "name": "Charlie Wilson",
+    "email": "charlie.wilson@student.edu",
+    "role": "STUDENT"
+  },
+  {
+    "name": "Diana Lee",
+    "email": "diana.lee@student.edu",
+    "role": "STUDENT"
+  },
+  {
+    "name": "Eva Rodriguez",
+    "email": "eva.rodriguez@student.edu",
+    "role": "STUDENT"
+  },
+  {
+    "name": "Frank Kim",
+    "email": "frank.kim@student.edu",
+    "role": "STUDENT"
+  }
+]

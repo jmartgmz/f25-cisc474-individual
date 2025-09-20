@@ -1,0 +1,37 @@
+[
+  {
+    "assignmentTitle": "React Todo App",
+    "userEmail": "alice.thompson@student.edu",
+    "content": "import React, { useState, useEffect } from 'react';\n\nfunction TodoApp() {\n  const [todos, setTodos] = useState([]);\n  const [input, setInput] = useState('');\n\n  useEffect(() => {\n    const saved = localStorage.getItem('todos');\n    if (saved) {\n      setTodos(JSON.parse(saved));\n    }\n  }, []);\n\n  const addTodo = () => {\n    if (input.trim()) {\n      const newTodos = [...todos, { id: Date.now(), text: input, completed: false }];\n      setTodos(newTodos);\n      localStorage.setItem('todos', JSON.stringify(newTodos));\n      setInput('');\n    }\n  };\n\n  return (\n    <div>\n      <h1>Todo App</h1>\n      <input value={input} onChange={(e) => setInput(e.target.value)} />\n      <button onClick={addTodo}>Add Todo</button>\n      {todos.map(todo => (\n        <div key={todo.id}>{todo.text}</div>\n      ))}\n    </div>\n  );\n}\n\nexport default TodoApp;",
+    "codeLanguage": "javascript",
+    "executionResult": "Code runs successfully. UI renders correctly with basic functionality implemented.",
+    "status": "GRADED",
+    "grade": 85,
+    "submittedAt": "2025-10-14T00:00:00.000Z"
+  },
+  {
+    "assignmentTitle": "React Todo App",
+    "userEmail": "bob.martinez@student.edu",
+    "content": "// Basic todo app - work in progress\nimport React from 'react';\n\nfunction App() {\n  return <div>Hello World</div>;\n}",
+    "codeLanguage": "javascript",
+    "status": "SUBMITTED",
+    "submittedAt": "2025-10-15T00:00:00.000Z"
+  },
+  {
+    "assignmentTitle": "Binary Search Implementation",
+    "userEmail": "charlie.wilson@student.edu",
+    "content": "def binary_search(arr, target):\n    left, right = 0, len(arr) - 1\n    \n    while left <= right:\n        mid = (left + right) // 2\n        if arr[mid] == target:\n            return mid\n        elif arr[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    \n    return -1\n\n# Test cases\ntest_array = [1, 3, 5, 7, 9, 11, 13]\nprint(binary_search(test_array, 7))  # Should return 3\nprint(binary_search(test_array, 4))  # Should return -1",
+    "codeLanguage": "python",
+    "executionResult": "3\n-1\nAll test cases passed. Time complexity: O(log n)",
+    "status": "GRADED",
+    "grade": 95,
+    "submittedAt": "2025-10-09T00:00:00.000Z"
+  },
+  {
+    "assignmentTitle": "Algorithm Analysis Essay",
+    "userEmail": "diana.lee@student.edu",
+    "content": "# Comparative Analysis of Sorting Algorithms\n\n## Introduction\nThis essay compares three fundamental sorting algorithms: bubble sort, merge sort, and quicksort, analyzing their time complexity, space complexity, and practical applications.\n\n## Bubble Sort\nBubble sort is the simplest sorting algorithm that repeatedly steps through the list, compares adjacent elements and swaps them if they are in the wrong order.\n\n**Time Complexity:** O(n²) in worst and average cases, O(n) in best case\n**Space Complexity:** O(1)\n**Pros:** Simple to understand and implement\n**Cons:** Inefficient for large datasets\n\n## Merge Sort\nMerge sort follows the divide-and-conquer approach, dividing the array into halves, sorting them separately, and then merging them.\n\n**Time Complexity:** O(n log n) in all cases\n**Space Complexity:** O(n)\n**Pros:** Stable, predictable performance\n**Cons:** Uses additional memory\n\n## Quicksort\nQuicksort picks a 'pivot' element and partitions the array around the pivot.\n\n**Time Complexity:** O(n log n) average case, O(n²) worst case\n**Space Complexity:** O(log n) average case\n**Pros:** In-place sorting, generally faster than other O(n log n) algorithms\n**Cons:** Worst-case performance can be poor\n\n## Conclusion\nThe choice of sorting algorithm depends on the specific requirements of the application, including data size, memory constraints, and stability requirements.",
+    "status": "SUBMITTED",
+    "submittedAt": "2025-10-24T00:00:00.000Z"
+  }
+]

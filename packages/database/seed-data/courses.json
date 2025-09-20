@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Web Application Development",
+    "description": "Learn to build modern web applications using React, Node.js, and databases.",
+    "code": "CISC474",
+    "semester": "Fall 2025",
+    "instructorEmail": "sarah.johnson@university.edu",
+    "isActive": true
+  },
+  {
+    "title": "Data Structures and Algorithms",
+    "description": "Fundamental data structures and algorithmic problem solving.",
+    "code": "CISC320",
+    "semester": "Fall 2025",
+    "instructorEmail": "michael.chen@university.edu",
+    "isActive": true
+  },
+  {
+    "title": "Machine Learning Basics",
+    "description": "Introduction to machine learning concepts and applications.",
+    "code": "CISC483",
+    "semester": "Spring 2025",
+    "instructorEmail": "sarah.johnson@university.edu",
+    "isActive": false
+  }
+]

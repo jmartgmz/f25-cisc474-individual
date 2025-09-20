@@ -1,0 +1,16 @@
+[
+  {
+    "submissionUser": "alice.thompson@student.edu",
+    "assignmentTitle": "React Todo App",
+    "authorEmail": "sarah.johnson@university.edu",
+    "content": "Great implementation! Your code is clean and follows React best practices. The use of localStorage for persistence is well done. For improvement, consider adding error handling and input validation.",
+    "isPrivate": false
+  },
+  {
+    "submissionUser": "charlie.wilson@student.edu",
+    "assignmentTitle": "Binary Search Implementation",
+    "authorEmail": "michael.chen@university.edu",
+    "content": "Excellent implementation with proper test cases. Your code is efficient and well-commented. Perfect understanding of the algorithm demonstrated.",
+    "isPrivate": false
+  }
+]
