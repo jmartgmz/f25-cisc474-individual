@@ -1,15 +1,17 @@
-import styles from "./page.module.css";
+import styles from './page.module.css';
 
 export default function InstructorPage() {
   return (
     <div className={styles.instructorContainer}>
       <h1 className={styles.pageTitle}>Instructor Dashboard</h1>
-      
+
       <div className={styles.instructorDashboard}>
         <div className={styles.coursesSection}>
           <div className={styles.courseCard}>
             <div className={styles.courseHeader}>
-              <div className={styles.courseTitle}>COURSE 1: Introduction to Programming</div>
+              <div className={styles.courseTitle}>
+                COURSE 1: Introduction to Programming
+              </div>
               <div className={styles.courseActions}>
                 <div className={styles.actionButton}>Edit</div>
                 <div className={styles.actionButton}>Manage</div>
@@ -25,10 +27,12 @@ export default function InstructorPage() {
               <span>To Grade: 15</span>
             </div>
           </div>
-          
+
           <div className={styles.courseCard}>
             <div className={styles.courseHeader}>
-              <div className={styles.courseTitle}>COURSE 3: Data Structures</div>
+              <div className={styles.courseTitle}>
+                COURSE 3: Data Structures
+              </div>
               <div className={styles.courseActions}>
                 <div className={styles.actionButton}>Edit</div>
                 <div className={styles.actionButton}>Manage</div>
@@ -45,7 +49,7 @@ export default function InstructorPage() {
             </div>
           </div>
         </div>
-        
+
         <div className={styles.statsSection}>
           <div className={styles.statCard}>
             <div className={styles.statTitle}>RECENT ACTIVITY</div>
@@ -62,7 +66,7 @@ export default function InstructorPage() {
               <span>3</span>
             </div>
           </div>
-          
+
           <div className={styles.statCard}>
             <div className={styles.statTitle}>STUDENT STATS</div>
             <div className={styles.statItem}>

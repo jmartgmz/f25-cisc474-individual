@@ -5,7 +5,7 @@ flowchart TD
     L[Login / Sign Up] --> SD[Student Dashboard]
     L --> ID[Instructor Dashboard]
     L --> AD[Admin Dashboard]
-    
+
     SD --> H[Home]
     SD --> C[Courses]
     H --> CH[Course Home]
@@ -13,7 +13,7 @@ flowchart TD
     CH --> AL[Assignment List]
     AL --> AP[Assignment Page]
     AP --> SUB[Submit]
-    
+
     ID --> IC[Instructor Course Home]
     ID --> NA[New Assignment]
     ID --> NC[New Course]
@@ -24,13 +24,13 @@ flowchart TD
     IC --> SM[Student Management]
     IC --> CM[Course Content]
     IC --> CA[Course Analytics]
-    
+
     AD --> UM[User Management]
     AD --> SS[System Settings]
     AD --> SL[System Logs]
     AD --> CSM[Course System Management]
     AD --> SA[System Analytics]
-    
+
     L --> HELP[Help]
     SD --> HELP
     ID --> HELP

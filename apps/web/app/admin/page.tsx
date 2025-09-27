@@ -1,14 +1,14 @@
-import styles from "./page.module.css";
+import styles from './page.module.css';
 
 export default function AdminPage() {
   return (
     <div className={styles.adminContainer}>
       <h1 className={styles.pageTitle}>Admin Dashboard</h1>
-      
+
       <div className={styles.adminDashboard}>
         <div className={styles.adminSection}>
           <h2 className={styles.sectionTitle}>USERS MANAGEMENT</h2>
-          
+
           <div className={styles.adminCard}>
             <div className={styles.cardHeader}>
               <div className={styles.cardTitle}>Users</div>
@@ -16,9 +16,9 @@ export default function AdminPage() {
                 <div className={styles.actionButton}>Manage</div>
               </div>
             </div>
-            
+
             <div className={styles.createButton}>Create User</div>
-            
+
             <table className={styles.dataTable}>
               <thead>
                 <tr>
@@ -55,10 +55,10 @@ export default function AdminPage() {
             </table>
           </div>
         </div>
-        
+
         <div className={styles.adminSection}>
           <h2 className={styles.sectionTitle}>COURSES MANAGEMENT</h2>
-          
+
           <div className={styles.adminCard}>
             <div className={styles.cardHeader}>
               <div className={styles.cardTitle}>Courses</div>
@@ -66,9 +66,9 @@ export default function AdminPage() {
                 <div className={styles.actionButton}>Manage</div>
               </div>
             </div>
-            
+
             <div className={styles.createButton}>Create Course</div>
-            
+
             <table className={styles.dataTable}>
               <thead>
                 <tr>

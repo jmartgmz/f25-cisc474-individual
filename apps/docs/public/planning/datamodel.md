@@ -8,7 +8,7 @@ erDiagram
         string lastName
         string role
     }
-    
+
     COURSE {
         string id
         string title
@@ -18,7 +18,7 @@ erDiagram
         datetime endDate
         string instructorId
     }
-    
+
     ASSIGNMENT {
         string id
         string title
@@ -28,17 +28,17 @@ erDiagram
         string courseId
         datetime createdAt
     }
-    
+
     SUBMISSION {
         string id
         string status
         int score
         string feedback
         string studentId
-        string assignmentId 
+        string assignmentId
         datetime submittedAt
     }
-    
+
     GRADE {
         string id
         string studentId
@@ -47,22 +47,22 @@ erDiagram
         string feedback
         datetime gradedAt
     }
-    
+
     %% This part below was generated with help of ChatGPT given instructions on which receives which
-    
+
     USER ||--o{ COURSE : "instructs"
     USER ||--o{ SUBMISSION : "submits"
     USER ||--o{ GRADE : "receives"
-    
+
     COURSE ||--o{ ASSIGNMENT : "contains"
-    
+
     ASSIGNMENT ||--o{ SUBMISSION : "receives"
     ASSIGNMENT ||--o{ GRADE : "graded for"
-    
+
     SUBMISSION }o--|| USER : "submitted by"
     SUBMISSION }o--|| ASSIGNMENT : "for"
-    
-    
+
+
     GRADE }o--|| USER : "student"
     GRADE }o--|| ASSIGNMENT : "assignment"
 ```
