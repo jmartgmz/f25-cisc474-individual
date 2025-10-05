@@ -3,7 +3,6 @@
   min-height: calc(100vh - var(--header-height, 60px) - var(--footer-height, 40px)); /*Takes in count the footer and header*/
   padding: 2rem;
   grid-template-columns: 2fr 1.2fr 1fr;
-  grid-template-rows: auto auto auto;
   gap: 1rem;
 }
 
