@@ -3,8 +3,15 @@
   --foreground: #171717;
 }
 
+/* Manual dark mode override */
+[data-theme="dark"] {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+/* System preference dark mode (fallback) */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme]) {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
@@ -36,15 +43,20 @@ a {
   display: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+/* Manual dark mode */
+[data-theme="dark"] .imgLight {
+  display: none;
+}
+[data-theme="dark"] .imgDark {
+  display: unset;
+}
 
-  .imgLight {
+/* System preference dark mode (fallback) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) .imgLight {
     display: none;
   }
-  .imgDark {
+  :root:not([data-theme]) .imgDark {
     display: unset;
   }
 }
