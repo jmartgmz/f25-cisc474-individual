@@ -1,12 +1,18 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --text-color: #333;
+  --bg-color: #fff;
+  --hover-bg: rgba(0, 0, 0, 0.1);
 }
 
 /* Manual dark mode override */
 [data-theme="dark"] {
   --background: #0a0a0a;
   --foreground: #ededed;
+  --text-color: #fff;
+  --bg-color: #1a1a1a;
+  --hover-bg: rgba(255, 255, 255, 0.1);
 }
 
 /* System preference dark mode (fallback) */
@@ -14,6 +20,9 @@
   :root:not([data-theme]) {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --text-color: #fff;
+    --bg-color: #1a1a1a;
+    --hover-bg: rgba(255, 255, 255, 0.1);
   }
 }
 
