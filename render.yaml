@@ -35,4 +35,4 @@ services:
       - key: NODE_VERSION
         value: 20
       - key: NEXT_PUBLIC_API_URL
-        value: https://f25-cisc474-individual-api.onrender.com
+        value: https://f25-cisc474-individual-ae3f.onrender.com
