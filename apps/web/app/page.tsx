@@ -1,8 +1,45 @@
 import styles from './page.module.css';
+import Link from 'next/link';
 
 export default function Home() {
   return (
     <div className={styles.dashboard}>
+      {/* Demo Banner */}
+      <div className={styles.demoBanner}>
+        <div className={styles.demoContent}>
+          <h2 className={styles.demoTitle}>🚀 Backend API Integration Demo</h2>
+          <p className={styles.demoText}>
+            Experience live data fetching with React Suspense and proper CORS configuration
+          </p>
+          <Link href="/demo" className={styles.demoButton}>
+            View Demo & Testing Instructions →
+          </Link>
+        </div>
+      </div>
+
+      {/* Navigation Section */}
+      <div className={styles.navigationSection}>
+        <div className={styles.sectionTitle}>API DATA PAGES</div>
+        <div className={styles.navigationLinks}>
+          <Link href="/courses" className={styles.navLink}>
+            <div className={styles.navCard}>
+              <div className={styles.navTitle}>📚 View Courses</div>
+              <div className={styles.navDescription}>
+                Browse all available courses with real data from our backend API
+              </div>
+            </div>
+          </Link>
+          <Link href="/instructor" className={styles.navLink}>
+            <div className={styles.navCard}>
+              <div className={styles.navTitle}>👨‍🏫 View Instructors</div>
+              <div className={styles.navDescription}>
+                See all instructors and their courses with real data from our backend API
+              </div>
+            </div>
+          </Link>
+        </div>
+      </div>
+      
       <div className={styles.coursesSection}>
         <div className={styles.courseBox}>
           <div className={styles.courseTitle}>COURSE 1</div>

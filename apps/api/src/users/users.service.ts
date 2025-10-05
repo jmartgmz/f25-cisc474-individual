@@ -9,6 +9,17 @@ export class UsersService {
     return this.prisma.user.findMany();
   }
 
+  async findInstructors() {
+    return this.prisma.user.findMany({
+      where: {
+        role: 'INSTRUCTOR'
+      },
+      include: {
+        coursesAsInstructor: true
+      }
+    });
+  }
+
   async findOne(id: string) {
     return this.prisma.user.findUnique({
       where: { id },

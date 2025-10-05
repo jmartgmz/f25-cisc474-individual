@@ -3,7 +3,100 @@
   min-height: calc(100vh - var(--header-height, 60px) - var(--footer-height, 40px)); /*Takes in count the footer and header*/
   padding: 2rem;
   grid-template-columns: 2fr 1.2fr 1fr;
+  grid-template-rows: auto auto auto;
   gap: 1rem;
+}
+
+/* Demo Banner styles */
+.demoBanner {
+  grid-column: 1 / -1;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  text-align: center;
+  margin-bottom: 1rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.demoContent {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.demoTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.demoText {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.demoButton {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.demoButton:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Navigation section styles */
+.navigationSection {
+  grid-column: 1 / -1;
+  margin-bottom: 1rem;
+}
+
+.navigationLinks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.navLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.navCard {
+  padding: 1.5rem;
+  border: 2px solid #007acc;
+  background-color: #f0f8ff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.navCard:hover {
+  background-color: #e6f3ff;
+  border-color: #005999;
+  transform: translateY(-2px);
+}
+
+.navTitle {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #005999;
+}
+
+.navDescription {
+  color: #444;
+  font-size: 0.95rem;
+  line-height: 1.4;
 }
 
 .coursesSection {

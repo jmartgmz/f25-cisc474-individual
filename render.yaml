@@ -4,7 +4,7 @@ services:
     env: node
     plan: free
     rootDir: .
-    buildCommand: npm install  && npm run build
+    buildCommand: npm install && npm run build
     startCommand: npm run start -w ./apps/api --port 10000 --host 0.0.0.0
     preDeployCommand: npx prisma migrate deploy && npx prisma db seed
     healthCheckPath: /
@@ -16,7 +16,23 @@ services:
         value: 10000
       - key: HOST
         value: 0.0.0.0
+      - key: FRONTEND_URL
+        value: https://f25-cisc474-individual-web.onrender.com
       - key: DATABASE_URL
         sync: false  # set in Dashboard or via render CLI
       - key: DIRECT_URL
         sync: false  # set in Dashboard or via render CLI
+
+  - type: web
+    name: web
+    env: node
+    plan: free
+    rootDir: .
+    buildCommand: npm install && npm run build -w ./apps/web
+    startCommand: npm run start -w ./apps/web
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: NEXT_PUBLIC_API_URL
+        value: https://f25-cisc474-individual-api.onrender.com

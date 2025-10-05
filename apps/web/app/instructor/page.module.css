@@ -9,6 +9,72 @@
   font-weight: bold;
 }
 
+/* New instructor grid styles */
+.instructorsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 1.5rem;
+}
+
+.instructorCard {
+  padding: 1.5rem;
+  border: 1px solid #222;
+  background-color: #f9f9f9;
+}
+
+.instructorName {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #222;
+}
+
+.instructorInfo {
+  margin-bottom: 0.5rem;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.coursesList {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #ddd;
+}
+
+.coursesTitle {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.courseItem {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 0.5rem;
+  margin-bottom: 0.3rem;
+  font-size: 0.9rem;
+}
+
+.courseCode {
+  font-weight: bold;
+  color: #666;
+}
+
+.courseTitle {
+  color: #444;
+}
+
+.courseSemester {
+  color: #777;
+  font-style: italic;
+}
+
+.courseStatus {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+/* Existing dashboard styles for backward compatibility */
 .instructorDashboard {
   display: grid;
   grid-template-columns: 2fr 1fr;

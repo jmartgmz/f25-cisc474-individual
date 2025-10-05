@@ -10,6 +10,11 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
+  @Get('instructors')
+  findInstructors() {
+    return this.usersService.findInstructors();
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.usersService.findOne(id);
