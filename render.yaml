@@ -17,7 +17,7 @@ services:
       - key: HOST
         value: 0.0.0.0
       - key: FRONTEND_URL
-        value: https://f25-cisc474-individual-web.onrender.com
+        value: https://jsonwebcisc474.vercel.app
       - key: DATABASE_URL
         sync: false  # set in Dashboard or via render CLI
       - key: DIRECT_URL
