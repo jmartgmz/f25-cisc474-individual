@@ -40,6 +40,12 @@ export default function InstructorsClient() {
     const fetchInstructors = async () => {
       try {
         const apiUrl = process.env.NEXT_PUBLIC_API_URL || process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3000';
+        console.log('API URL being used:', apiUrl);
+        console.log('Environment variables:', {
+          NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
+          NEXT_PUBLIC_API_BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL
+        });
+        
         const response = await fetch(`${apiUrl}/users/instructors`);
         
         if (!response.ok) {

@@ -42,6 +42,12 @@ export default function CoursesClient() {
     const fetchCourses = async () => {
       try {
         const apiUrl = process.env.NEXT_PUBLIC_API_URL || process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:3000';
+        console.log('API URL being used:', apiUrl);
+        console.log('Environment variables:', {
+          NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
+          NEXT_PUBLIC_API_BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL
+        });
+        
         const response = await fetch(`${apiUrl}/courses`);
         
         if (!response.ok) {
