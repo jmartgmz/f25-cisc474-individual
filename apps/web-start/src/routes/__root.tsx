@@ -11,6 +11,8 @@ import { TanStackDevtools } from '@tanstack/react-devtools';
 import TanStackQueryDevtools from '../integrations/devtools';
 import appCss from '../styles.css?url';
 import type { QueryClient } from '@tanstack/react-query';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 export interface MyRouterContext {
   queryClient: QueryClient;
@@ -37,6 +39,14 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
       },
     ],
   }),
+
+  component: () => (
+    <div>
+      <Header />
+      <Outlet />
+      <Footer />
+    </div>
+  ),
 
   shellComponent: RootDocument,
 });

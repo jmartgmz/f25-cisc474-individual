@@ -1,0 +1,152 @@
+.instructorContainer {
+  min-height: calc(100vh - var(--header-height, 60px) - var(--footer-height, 40px));
+  padding: 2rem;
+}
+
+.pageTitle {
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* New instructor grid styles */
+.instructorsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 1.5rem;
+}
+
+.instructorCard {
+  padding: 1.5rem;
+  border: 1px solid #222;
+  background-color: #f9f9f9;
+}
+
+.instructorName {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #222;
+}
+
+.instructorInfo {
+  margin-bottom: 0.5rem;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.coursesList {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #ddd;
+}
+
+.coursesTitle {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.courseItem {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 0.5rem;
+  margin-bottom: 0.3rem;
+  font-size: 0.9rem;
+}
+
+.courseCode {
+  font-weight: bold;
+  color: #666;
+}
+
+.courseTitle {
+  color: #444;
+}
+
+.courseSemester {
+  color: #777;
+  font-style: italic;
+}
+
+.courseStatus {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+/* Existing dashboard styles for backward compatibility */
+.instructorDashboard {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+
+.coursesSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.courseCard {
+  padding: 1.5rem;
+  border: 1px solid #222;
+}
+
+.courseHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.courseTitle {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.courseActions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.actionButton {
+  padding: 0.25rem 0.5rem;
+  background-color: #222;
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.studentsCount {
+  margin-bottom: 0.5rem;
+  color: #444;
+}
+
+.progressInfo {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.statsSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.statCard {
+  padding: 1.5rem;
+  border: 1px solid #222;
+}
+
+.statTitle {
+  margin-bottom: 1rem;
+  font-weight: bold;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.5rem;
+}
+
+.statItem {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
