@@ -17,6 +17,10 @@ const config = defineConfig({
     // this must go last to ensure that SSR functions are found
     viteReact(),
   ],
+  server: {
+    host: 'localhost',
+    port: 3001,
+  },
 });
 
 export default config;

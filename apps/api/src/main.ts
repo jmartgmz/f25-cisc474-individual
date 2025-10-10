@@ -6,7 +6,13 @@ async function bootstrap() {
   
   // Configure CORS - allow multiple origins
   const allowedOrigins = [
-    'http://localhost:3001',
+    'http://localhost:3000',      // Vite default port
+    'http://localhost:3001',      // TanStack Start port (localhost)
+    'http://127.0.0.1:3001',      // TanStack Start port (IP address)
+    'http://localhost:5173',      // Vite default dev server port
+    'http://127.0.0.1:5173',      // Vite default dev server port (IP address)
+    'http://localhost:4173',      // Vite preview port
+    'http://127.0.0.1:4173',      // Vite preview port (IP address)
     'https://jsonwebcisc474.vercel.app',
     process.env.FRONTEND_URL,
   ].filter(Boolean);
@@ -17,7 +23,7 @@ async function bootstrap() {
       if (!origin) return callback(null, true);
 
       // Check if the origin is in the allowed list or matches a Vercel preview URL
-      if (allowedOrigins.includes(origin) || (typeof origin === 'string' && origin.endsWith('.vercel.app'))) {
+      if (allowedOrigins.includes(origin as string) || (typeof origin === 'string' && origin.endsWith('.vercel.app'))) {
         callback(null, true);
       } else {
         callback(new Error('Not allowed by CORS'));
