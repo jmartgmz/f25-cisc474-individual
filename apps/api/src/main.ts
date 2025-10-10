@@ -14,6 +14,7 @@ async function bootstrap() {
     'http://localhost:4173',      // Vite preview port
     'http://127.0.0.1:4173',      // Vite preview port (IP address)
     'https://jsonwebcisc474.vercel.app',
+    'https://lms-project.jmartgmz.workers.dev',  // Cloudflare Workers domain
     process.env.FRONTEND_URL,
   ].filter(Boolean);
 
@@ -22,8 +23,12 @@ async function bootstrap() {
       // Allow requests with no origin (like mobile apps or curl)
       if (!origin) return callback(null, true);
 
-      // Check if the origin is in the allowed list or matches a Vercel preview URL
-      if (allowedOrigins.includes(origin as string) || (typeof origin === 'string' && origin.endsWith('.vercel.app'))) {
+      // Check if the origin is in the allowed list or matches a Vercel preview URL or Workers domain
+      if (
+        allowedOrigins.includes(origin as string) ||
+        (typeof origin === 'string' && origin.endsWith('.vercel.app')) ||
+        (typeof origin === 'string' && origin.endsWith('.workers.dev'))
+      ) {
         callback(null, true);
       } else {
         callback(new Error('Not allowed by CORS'));
