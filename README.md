@@ -2,10 +2,10 @@
 
 A repo that you can fork to make new projects
 
-New Frontend: https://lms-project.jmartgmz.workers.dev/
-Frontend: https://jsonwebcisc474.vercel.app/
-Backend: https://f25-cisc474-individual-ae3f.onrender.com/
-Repo: https://github.com/jmartgmz/f25-cisc474-individual
+- New Frontend: https://lms-project.jmartgmz.workers.dev/
+- Frontend: https://jsonwebcisc474.vercel.app/
+- Backend: https://f25-cisc474-individual-ae3f.onrender.com/
+- Repo: https://github.com/jmartgmz/f25-cisc474-individual
 
 # Setup
 
@@ -21,7 +21,7 @@ Repo: https://github.com/jmartgmz/f25-cisc474-individual
   - Run `npm install` to install the project dependencies
 - Run your site
   - `npm run dev`
-  
+
 # Deployment
 
 - Frontend:
