@@ -4,6 +4,18 @@ import { Suspense } from 'react';
 import { backendFetcher } from '../integrations/fetcher';
 import styles from './admin.module.css';
 
+interface User {
+  id: string;
+  name: string | null;
+  email: string;
+  emailVerified: string | null;
+  role: 'ADMIN' | 'INSTRUCTOR' | 'STUDENT';
+  createdAt: string;
+  updatedAt: string;
+  enrollments?: Array<{ id: string }>;
+  coursesAsInstructor?: Array<{ id: string }>;
+}
+
 interface Course {
   id: string;
   title: string;
@@ -17,6 +29,122 @@ interface Course {
     email: string;
   };
   enrollments: Array<{ id: string }>;
+}
+
+function UsersManagement() {
+  const { 
+    data: users, 
+    isLoading: loading, 
+    error 
+  } = useQuery<Array<User>>({
+    queryKey: ['users'],
+    queryFn: backendFetcher<Array<User>>('/users'),
+  });
+
+  if (loading) {
+    return (
+      <table className={styles.dataTable}>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Courses</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colSpan={7}>Loading users...</td>
+          </tr>
+        </tbody>
+      </table>
+    );
+  }
+
+  if (error) {
+    return (
+      <table className={styles.dataTable}>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Courses</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colSpan={7}>Error loading users: {error instanceof Error ? error.message : 'Unknown error'}</td>
+          </tr>
+        </tbody>
+      </table>
+    );
+  }
+
+  if (!users || users.length === 0) {
+    return (
+      <table className={styles.dataTable}>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Courses</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colSpan={7}>No users found</td>
+          </tr>
+        </tbody>
+      </table>
+    );
+  }
+
+  return (
+    <table className={styles.dataTable}>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Courses</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {users.map((user) => (
+          <tr key={user.id}>
+            <td>{user.id.substring(0, 8)}...</td>
+            <td>{user.name || 'No name'}</td>
+            <td>{user.email}</td>
+            <td>{user.role}</td>
+            <td>
+              {user.role === 'INSTRUCTOR' 
+                ? `${user.coursesAsInstructor?.length || 0} teaching`
+                : user.role === 'STUDENT' 
+                  ? `${user.enrollments?.length || 0} enrolled`
+                  : 'N/A'
+              }
+            </td>
+            <td>{user.emailVerified ? 'Verified' : 'Unverified'}</td>
+            <td>Edit / Delete</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  );
 }
 
 function CoursesManagement() {
@@ -147,40 +275,28 @@ function AdminPage() {
 
             <div className={styles.createButton}>Create User</div>
 
-            <table className={styles.dataTable}>
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Name</th>
-                  <th>Role</th>
-                  <th>Status</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>001</td>
-                  <td>John Doe</td>
-                  <td>Student</td>
-                  <td>Active</td>
-                  <td>Edit / Delete</td>
-                </tr>
-                <tr>
-                  <td>002</td>
-                  <td>Jane Smith</td>
-                  <td>Instructor</td>
-                  <td>Active</td>
-                  <td>Edit / Delete</td>
-                </tr>
-                <tr>
-                  <td>003</td>
-                  <td>Mark Johnson</td>
-                  <td>Admin</td>
-                  <td>Active</td>
-                  <td>Edit / Delete</td>
-                </tr>
-              </tbody>
-            </table>
+            <Suspense fallback={
+              <table className={styles.dataTable}>
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    <th>Courses</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td colSpan={7}>Loading users...</td>
+                  </tr>
+                </tbody>
+              </table>
+            }>
+              <UsersManagement />
+            </Suspense>
           </div>
         </div>
 
