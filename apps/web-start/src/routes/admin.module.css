@@ -10,8 +10,8 @@
 }
 
 .adminDashboard {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 2rem;
 }
 
@@ -22,9 +22,9 @@
 }
 
 .sectionTitle {
+  margin-bottom: 1rem;
   font-size: 1.2rem;
   font-weight: bold;
-  margin-bottom: 1rem;
 }
 
 .adminCard {
@@ -49,10 +49,10 @@
 
 .actionButton {
   padding: 0.25rem 0.5rem;
-  background-color: #222;
   color: white;
-  font-size: 0.9rem;
+  background-color: #222;
   cursor: pointer;
+  font-size: 0.9rem;
 }
 
 .dataTable {
@@ -72,9 +72,9 @@
 
 .createButton {
   display: inline-block;
-  margin-bottom: 1rem;
   padding: 0.5rem 1rem;
-  background-color: #222;
+  margin-bottom: 1rem;
   color: white;
+  background-color: #222;
   cursor: pointer;
 }
