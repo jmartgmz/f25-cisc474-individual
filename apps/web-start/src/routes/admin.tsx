@@ -1,4 +1,4 @@
-import { createFileRoute } from '@tanstack/react-router';
+import { Link, Outlet, createFileRoute } from '@tanstack/react-router';
 import { useQuery } from '@tanstack/react-query';
 import { Suspense } from 'react';
 import { backendFetcher } from '../integrations/fetcher';
@@ -307,7 +307,7 @@ function AdminPage() {
             <div className={styles.cardHeader}>
               <div className={styles.cardTitle}>Courses</div>
               <div className={styles.cardActions}>
-                <div className={styles.actionButton}>Manage</div>
+                <Link to="/admin/courses/manage" className={styles.actionButton}>Manage</Link>
               </div>
             </div>
 
@@ -338,6 +338,9 @@ function AdminPage() {
           </div>
         </div>
       </div>
+      
+      {/* Outlet for child routes */}
+      <Outlet />
     </div>
   );
 }
