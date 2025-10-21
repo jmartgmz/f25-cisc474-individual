@@ -56,7 +56,7 @@ function CreateCourseForm() {
   const [code, setCode] = useState('');
   const [semester, setSemester] = useState('');
   const [instructorId, setInstructorId] = useState('');
-  
+
   const queryClient = useQueryClient();
 
   const { data: users } = useQuery<Array<User>>({
@@ -64,17 +64,20 @@ function CreateCourseForm() {
     queryFn: backendFetcher<Array<User>>('/users'),
   });
 
-  const instructors = users?.filter(user => user.role === 'INSTRUCTOR') || [];
+  const instructors = users?.filter((user) => user.role === 'INSTRUCTOR') || [];
 
   const createMutation = useMutation({
     mutationFn: async (newCourse: CourseCreateIn) => {
-      const response = await fetch(import.meta.env.VITE_BACKEND_URL + '/courses/create', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await fetch(
+        import.meta.env.VITE_BACKEND_URL + '/courses/create',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(newCourse),
         },
-        body: JSON.stringify(newCourse),
-      });
+      );
       if (!response.ok) {
         throw new Error('Failed to create course');
       }
@@ -96,7 +99,7 @@ function CreateCourseForm() {
       alert('Please fill in all required fields');
       return;
     }
-    
+
     createMutation.mutate({
       title,
       description: description || null,
@@ -112,9 +115,14 @@ function CreateCourseForm() {
       <div className={styles.cardHeader}>
         <div className={styles.cardTitle}>Create New Course</div>
       </div>
-      
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+
+      <form
+        onSubmit={handleSubmit}
+        style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
+      >
+        <div
+          style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}
+        >
           <label style={{ fontWeight: 'bold' }}>Title *</label>
           <input
             type="text"
@@ -125,9 +133,16 @@ function CreateCourseForm() {
             style={{ padding: '0.5rem', border: '1px solid #ddd' }}
           />
         </div>
-        
+
         <div style={{ display: 'flex', gap: '1rem' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', flex: 1 }}>
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '0.5rem',
+              flex: 1,
+            }}
+          >
             <label style={{ fontWeight: 'bold' }}>Code *</label>
             <input
               type="text"
@@ -138,8 +153,15 @@ function CreateCourseForm() {
               style={{ padding: '0.5rem', border: '1px solid #ddd' }}
             />
           </div>
-          
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', flex: 1 }}>
+
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '0.5rem',
+              flex: 1,
+            }}
+          >
             <label style={{ fontWeight: 'bold' }}>Semester *</label>
             <input
               type="text"
@@ -151,8 +173,10 @@ function CreateCourseForm() {
             />
           </div>
         </div>
-        
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+
+        <div
+          style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}
+        >
           <label style={{ fontWeight: 'bold' }}>Instructor *</label>
           <select
             value={instructorId}
@@ -168,33 +192,42 @@ function CreateCourseForm() {
             ))}
           </select>
         </div>
-        
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+
+        <div
+          style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}
+        >
           <label style={{ fontWeight: 'bold' }}>Description</label>
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             placeholder="Course description"
             rows={3}
-            style={{ padding: '0.5rem', border: '1px solid #ddd', resize: 'vertical' }}
+            style={{
+              padding: '0.5rem',
+              border: '1px solid #ddd',
+              resize: 'vertical',
+            }}
           />
         </div>
-        
-        <button 
-          type="submit" 
+
+        <button
+          type="submit"
           disabled={createMutation.isPending}
           className={styles.createButton}
           style={{ alignSelf: 'flex-start' }}
         >
           {createMutation.isPending ? 'Creating...' : 'Create Course'}
         </button>
-        
+
         {createMutation.isError && (
           <div style={{ color: 'red', fontSize: '0.9rem' }}>
-            Error: {createMutation.error instanceof Error ? createMutation.error.message : 'Unknown error'}
+            Error:{' '}
+            {createMutation.error instanceof Error
+              ? createMutation.error.message
+              : 'Unknown error'}
           </div>
         )}
-        
+
         {createMutation.isSuccess && (
           <div style={{ color: 'green', fontSize: '0.9rem' }}>
             Course created successfully!
@@ -213,7 +246,7 @@ function EditCourseForm() {
   const [semester, setSemester] = useState('');
   const [instructorId, setInstructorId] = useState('');
   const [isActive, setIsActive] = useState(true);
-  
+
   const queryClient = useQueryClient();
 
   const { data: courses } = useQuery<Array<Course>>({
@@ -226,17 +259,20 @@ function EditCourseForm() {
     queryFn: backendFetcher<Array<User>>('/users'),
   });
 
-  const instructors = users?.filter(user => user.role === 'INSTRUCTOR') || [];
+  const instructors = users?.filter((user) => user.role === 'INSTRUCTOR') || [];
 
   const updateMutation = useMutation({
     mutationFn: async (updateData: CourseUpdateIn) => {
-      const response = await fetch(import.meta.env.VITE_BACKEND_URL + '/courses/update', {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await fetch(
+        import.meta.env.VITE_BACKEND_URL + '/courses/update',
+        {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(updateData),
         },
-        body: JSON.stringify(updateData),
-      });
+      );
       if (!response.ok) {
         throw new Error('Failed to update course');
       }
@@ -255,7 +291,7 @@ function EditCourseForm() {
   });
 
   const handleCourseSelect = (courseId: string) => {
-    const course = courses?.find(c => c.id === courseId);
+    const course = courses?.find((c) => c.id === courseId);
     if (course) {
       setSelectedCourseId(courseId);
       setTitle(course.title);
@@ -273,7 +309,7 @@ function EditCourseForm() {
       alert('Please select a course to edit');
       return;
     }
-    
+
     updateMutation.mutate({
       id: selectedCourseId,
       title,
@@ -290,9 +326,17 @@ function EditCourseForm() {
       <div className={styles.cardHeader}>
         <div className={styles.cardTitle}>Edit Course</div>
       </div>
-      
+
       <div style={{ marginBottom: '1rem' }}>
-        <label style={{ fontWeight: 'bold', display: 'block', marginBottom: '0.5rem' }}>Select Course *</label>
+        <label
+          style={{
+            fontWeight: 'bold',
+            display: 'block',
+            marginBottom: '0.5rem',
+          }}
+        >
+          Select Course *
+        </label>
         <select
           value={selectedCourseId}
           onChange={(e) => handleCourseSelect(e.target.value)}
@@ -308,8 +352,13 @@ function EditCourseForm() {
       </div>
 
       {selectedCourseId && (
-        <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+        <form
+          onSubmit={handleSubmit}
+          style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
+        >
+          <div
+            style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}
+          >
             <label style={{ fontWeight: 'bold' }}>Title *</label>
             <input
               type="text"
@@ -319,9 +368,16 @@ function EditCourseForm() {
               style={{ padding: '0.5rem', border: '1px solid #ddd' }}
             />
           </div>
-          
+
           <div style={{ display: 'flex', gap: '1rem' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', flex: 1 }}>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '0.5rem',
+                flex: 1,
+              }}
+            >
               <label style={{ fontWeight: 'bold' }}>Code *</label>
               <input
                 type="text"
@@ -331,8 +387,15 @@ function EditCourseForm() {
                 style={{ padding: '0.5rem', border: '1px solid #ddd' }}
               />
             </div>
-            
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', flex: 1 }}>
+
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '0.5rem',
+                flex: 1,
+              }}
+            >
               <label style={{ fontWeight: 'bold' }}>Semester *</label>
               <input
                 type="text"
@@ -343,8 +406,10 @@ function EditCourseForm() {
               />
             </div>
           </div>
-          
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+
+          <div
+            style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}
+          >
             <label style={{ fontWeight: 'bold' }}>Instructor *</label>
             <select
               value={instructorId}
@@ -360,17 +425,23 @@ function EditCourseForm() {
               ))}
             </select>
           </div>
-          
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+
+          <div
+            style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}
+          >
             <label style={{ fontWeight: 'bold' }}>Description</label>
             <textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
               rows={3}
-              style={{ padding: '0.5rem', border: '1px solid #ddd', resize: 'vertical' }}
+              style={{
+                padding: '0.5rem',
+                border: '1px solid #ddd',
+                resize: 'vertical',
+              }}
             />
           </div>
-          
+
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <input
               type="checkbox"
@@ -378,24 +449,29 @@ function EditCourseForm() {
               onChange={(e) => setIsActive(e.target.checked)}
               id="isActive"
             />
-            <label htmlFor="isActive" style={{ fontWeight: 'bold' }}>Active Course</label>
+            <label htmlFor="isActive" style={{ fontWeight: 'bold' }}>
+              Active Course
+            </label>
           </div>
-          
-          <button 
-            type="submit" 
+
+          <button
+            type="submit"
             disabled={updateMutation.isPending}
             className={styles.createButton}
             style={{ alignSelf: 'flex-start' }}
           >
             {updateMutation.isPending ? 'Updating...' : 'Update Course'}
           </button>
-          
+
           {updateMutation.isError && (
             <div style={{ color: 'red', fontSize: '0.9rem' }}>
-              Error: {updateMutation.error instanceof Error ? updateMutation.error.message : 'Unknown error'}
+              Error:{' '}
+              {updateMutation.error instanceof Error
+                ? updateMutation.error.message
+                : 'Unknown error'}
             </div>
           )}
-          
+
           {updateMutation.isSuccess && (
             <div style={{ color: 'green', fontSize: '0.9rem' }}>
               Course updated successfully!
@@ -409,7 +485,7 @@ function EditCourseForm() {
 
 function DeleteCourseForm() {
   const [selectedCourseId, setSelectedCourseId] = useState('');
-  
+
   const queryClient = useQueryClient();
 
   const { data: courses } = useQuery<Array<Course>>({
@@ -419,13 +495,16 @@ function DeleteCourseForm() {
 
   const deleteMutation = useMutation({
     mutationFn: async (deleteData: CourseDeleteIn) => {
-      const response = await fetch(import.meta.env.VITE_BACKEND_URL + '/courses/delete', {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await fetch(
+        import.meta.env.VITE_BACKEND_URL + '/courses/delete',
+        {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(deleteData),
         },
-        body: JSON.stringify(deleteData),
-      });
+      );
       if (!response.ok) {
         throw new Error('Failed to delete course');
       }
@@ -443,24 +522,36 @@ function DeleteCourseForm() {
       alert('Please select a course to delete');
       return;
     }
-    
-    const course = courses?.find(c => c.id === selectedCourseId);
-    if (course && confirm(`Are you sure you want to delete "${course.title}"? This action cannot be undone.`)) {
+
+    const course = courses?.find((c) => c.id === selectedCourseId);
+    if (
+      course &&
+      confirm(
+        `Are you sure you want to delete "${course.title}"? This action cannot be undone.`,
+      )
+    ) {
       deleteMutation.mutate({ id: selectedCourseId });
     }
   };
 
-  const selectedCourse = courses?.find(c => c.id === selectedCourseId);
+  const selectedCourse = courses?.find((c) => c.id === selectedCourseId);
 
   return (
     <div className={styles.adminCard}>
       <div className={styles.cardHeader}>
         <div className={styles.cardTitle}>Delete Course</div>
       </div>
-      
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-          <label style={{ fontWeight: 'bold' }}>Select Course to Delete *</label>
+
+      <form
+        onSubmit={handleSubmit}
+        style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}
+      >
+        <div
+          style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}
+        >
+          <label style={{ fontWeight: 'bold' }}>
+            Select Course to Delete *
+          </label>
           <select
             value={selectedCourseId}
             onChange={(e) => setSelectedCourseId(e.target.value)}
@@ -476,56 +567,91 @@ function DeleteCourseForm() {
         </div>
 
         {selectedCourse && (
-          <div style={{ 
-            padding: '1rem', 
-            border: '1px solid #ddd', 
-            backgroundColor: '#f8f9fa',
-            borderRadius: '4px'
-          }}>
-            <h4 style={{ margin: '0 0 0.5rem 0', fontWeight: 'bold' }}>Course Details:</h4>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', fontSize: '0.9rem' }}>
-              <div><strong>Title:</strong> {selectedCourse.title}</div>
-              <div><strong>Code:</strong> {selectedCourse.code}</div>
-              <div><strong>Semester:</strong> {selectedCourse.semester}</div>
-              <div><strong>Instructor:</strong> {selectedCourse.instructor?.name || selectedCourse.instructor?.email}</div>
-              <div><strong>Students Enrolled:</strong> {selectedCourse.enrollments?.length || 0}</div>
-              <div><strong>Status:</strong> {selectedCourse.isActive ? 'Active' : 'Inactive'}</div>
-            </div>
-            <div style={{ 
-              marginTop: '0.5rem', 
-              padding: '0.5rem', 
-              backgroundColor: '#fff3cd', 
-              border: '1px solid #ffeaa7',
+          <div
+            style={{
+              padding: '1rem',
+              border: '1px solid #ddd',
+              backgroundColor: '#f8f9fa',
               borderRadius: '4px',
-              fontSize: '0.9rem'
-            }}>
+            }}
+          >
+            <h4 style={{ margin: '0 0 0.5rem 0', fontWeight: 'bold' }}>
+              Course Details:
+            </h4>
+            <div
+              style={{
+                display: 'grid',
+                gridTemplateColumns: '1fr 1fr',
+                gap: '0.5rem',
+                fontSize: '0.9rem',
+              }}
+            >
+              <div>
+                <strong>Title:</strong> {selectedCourse.title}
+              </div>
+              <div>
+                <strong>Code:</strong> {selectedCourse.code}
+              </div>
+              <div>
+                <strong>Semester:</strong> {selectedCourse.semester}
+              </div>
+              <div>
+                <strong>Instructor:</strong>{' '}
+                {selectedCourse.instructor?.name ||
+                  selectedCourse.instructor?.email}
+              </div>
+              <div>
+                <strong>Students Enrolled:</strong>{' '}
+                {selectedCourse.enrollments?.length || 0}
+              </div>
+              <div>
+                <strong>Status:</strong>{' '}
+                {selectedCourse.isActive ? 'Active' : 'Inactive'}
+              </div>
+            </div>
+            <div
+              style={{
+                marginTop: '0.5rem',
+                padding: '0.5rem',
+                backgroundColor: '#fff3cd',
+                border: '1px solid #ffeaa7',
+                borderRadius: '4px',
+                fontSize: '0.9rem',
+              }}
+            >
               ⚠️ <strong>Warning:</strong> This action cannot be undone!
             </div>
           </div>
         )}
-        
-        <button 
-          type="submit" 
+
+        <button
+          type="submit"
           disabled={!selectedCourseId || deleteMutation.isPending}
-          style={{ 
-            backgroundColor: '#dc3545', 
+          style={{
+            backgroundColor: '#dc3545',
             color: 'white',
             padding: '0.5rem 1rem',
             border: 'none',
-            cursor: selectedCourseId && !deleteMutation.isPending ? 'pointer' : 'not-allowed',
+            cursor:
+              selectedCourseId && !deleteMutation.isPending
+                ? 'pointer'
+                : 'not-allowed',
             opacity: selectedCourseId && !deleteMutation.isPending ? 1 : 0.6,
-            alignSelf: 'flex-start'
+            alignSelf: 'flex-start',
           }}
         >
           {deleteMutation.isPending ? 'Deleting...' : 'Delete Course'}
         </button>
-        
+
         {deleteMutation.isError && (
           <div style={{ color: 'red', fontSize: '0.9rem' }}>
-            Error: {deleteMutation.error instanceof Error ? deleteMutation.error.message : 'Unknown error'}
+            Error:{' '}
+            {deleteMutation.error instanceof Error
+              ? deleteMutation.error.message
+              : 'Unknown error'}
           </div>
         )}
-        
+
         {deleteMutation.isSuccess && (
           <div style={{ color: 'green', fontSize: '0.9rem' }}>
             Course deleted successfully!
@@ -538,15 +664,22 @@ function DeleteCourseForm() {
 
 function ManageCoursesPage() {
   return (
-    <div className={styles.adminSection} style={{ marginTop: '3rem', paddingTop: '2rem', borderTop: '2px solid #222' }}>
+    <div
+      className={styles.adminSection}
+      style={{
+        marginTop: '3rem',
+        paddingTop: '2rem',
+        borderTop: '2px solid #222',
+      }}
+    >
       <h2 className={styles.sectionTitle}>COURSE ADMINISTRATION</h2>
-      
+
       <div className={styles.adminDashboard}>
         <CreateCourseForm />
         <EditCourseForm />
         <DeleteCourseForm />
       </div>
-      
+
       <div style={{ marginTop: '1rem', textAlign: 'center' }}>
         <Link to="/admin" className={styles.actionButton}>
           ← Back to Admin Dashboard

@@ -1,8 +1,8 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { useQuery } from '@tanstack/react-query'
-import { Suspense } from 'react'
-import { backendFetcher } from '../integrations/fetcher'
-import styles from './instructor.module.css'
+import { createFileRoute } from '@tanstack/react-router';
+import { useQuery } from '@tanstack/react-query';
+import { Suspense } from 'react';
+import { backendFetcher } from '../integrations/fetcher';
+import styles from './instructor.module.css';
 
 interface Instructor {
   id: string;
@@ -33,23 +33,27 @@ function InstructorsLoadingSkeleton() {
 }
 
 function InstructorsClient() {
-  const { 
-    data: instructors, 
-    isLoading: loading, 
-    error 
+  const {
+    data: instructors,
+    isLoading: loading,
+    error,
   } = useQuery<Array<Instructor>>({
     queryKey: ['instructors'],
     queryFn: backendFetcher<Array<Instructor>>('/users/instructors'),
-  })
+  });
 
   if (loading) return <InstructorsLoadingSkeleton />;
-  
+
   if (error) {
     return (
       <div className={styles.instructorsGrid}>
         <div className={styles.instructorCard}>
           <div className={styles.instructorName}>Error Loading Instructors</div>
-          <div className={styles.instructorInfo}>{error instanceof Error ? error.message : 'Failed to fetch instructors'}</div>
+          <div className={styles.instructorInfo}>
+            {error instanceof Error
+              ? error.message
+              : 'Failed to fetch instructors'}
+          </div>
         </div>
       </div>
     );
@@ -60,7 +64,9 @@ function InstructorsClient() {
       <div className={styles.instructorsGrid}>
         <div className={styles.instructorCard}>
           <div className={styles.instructorName}>No Instructors Found</div>
-          <div className={styles.instructorInfo}>No instructors are currently available.</div>
+          <div className={styles.instructorInfo}>
+            No instructors are currently available.
+          </div>
         </div>
       </div>
     );
@@ -73,12 +79,8 @@ function InstructorsClient() {
           <div className={styles.instructorName}>
             {instructor.name || 'Unnamed Instructor'}
           </div>
-          <div className={styles.instructorInfo}>
-            Email: {instructor.email}
-          </div>
-          <div className={styles.instructorInfo}>
-            Role: {instructor.role}
-          </div>
+          <div className={styles.instructorInfo}>Email: {instructor.email}</div>
+          <div className={styles.instructorInfo}>Role: {instructor.role}</div>
           {instructor.coursesAsInstructor.length > 0 && (
             <div className={styles.coursesSection}>
               <div className={styles.coursesTitle}>Courses Teaching:</div>
@@ -86,7 +88,9 @@ function InstructorsClient() {
                 {instructor.coursesAsInstructor.map((course) => (
                   <li key={course.id} className={styles.courseItem}>
                     {course.title} ({course.code}) - {course.semester}
-                    {!course.isActive && <span className={styles.inactive}> (Inactive)</span>}
+                    {!course.isActive && (
+                      <span className={styles.inactive}> (Inactive)</span>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -125,4 +129,4 @@ function InstructorPage() {
 
 export const Route = createFileRoute('/instructor')({
   component: InstructorPage,
-})
+});

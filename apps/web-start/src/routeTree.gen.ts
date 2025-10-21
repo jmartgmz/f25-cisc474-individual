@@ -8,87 +8,87 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from './routes/__root'
-import { Route as UserRouteImport } from './routes/user'
-import { Route as InstructorRouteImport } from './routes/instructor'
-import { Route as CoursesRouteImport } from './routes/courses'
-import { Route as AdminRouteImport } from './routes/admin'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as AdminCoursesManageRouteImport } from './routes/admin/courses/manage'
+import { Route as rootRouteImport } from './routes/__root';
+import { Route as UserRouteImport } from './routes/user';
+import { Route as InstructorRouteImport } from './routes/instructor';
+import { Route as CoursesRouteImport } from './routes/courses';
+import { Route as AdminRouteImport } from './routes/admin';
+import { Route as IndexRouteImport } from './routes/index';
+import { Route as AdminCoursesManageRouteImport } from './routes/admin/courses/manage';
 
 const UserRoute = UserRouteImport.update({
   id: '/user',
   path: '/user',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any);
 const InstructorRoute = InstructorRouteImport.update({
   id: '/instructor',
   path: '/instructor',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any);
 const CoursesRoute = CoursesRouteImport.update({
   id: '/courses',
   path: '/courses',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any);
 const AdminRoute = AdminRouteImport.update({
   id: '/admin',
   path: '/admin',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any);
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
-} as any)
+} as any);
 const AdminCoursesManageRoute = AdminCoursesManageRouteImport.update({
   id: '/courses/manage',
   path: '/courses/manage',
   getParentRoute: () => AdminRoute,
-} as any)
+} as any);
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/admin': typeof AdminRouteWithChildren
-  '/courses': typeof CoursesRoute
-  '/instructor': typeof InstructorRoute
-  '/user': typeof UserRoute
-  '/admin/courses/manage': typeof AdminCoursesManageRoute
+  '/': typeof IndexRoute;
+  '/admin': typeof AdminRouteWithChildren;
+  '/courses': typeof CoursesRoute;
+  '/instructor': typeof InstructorRoute;
+  '/user': typeof UserRoute;
+  '/admin/courses/manage': typeof AdminCoursesManageRoute;
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/admin': typeof AdminRouteWithChildren
-  '/courses': typeof CoursesRoute
-  '/instructor': typeof InstructorRoute
-  '/user': typeof UserRoute
-  '/admin/courses/manage': typeof AdminCoursesManageRoute
+  '/': typeof IndexRoute;
+  '/admin': typeof AdminRouteWithChildren;
+  '/courses': typeof CoursesRoute;
+  '/instructor': typeof InstructorRoute;
+  '/user': typeof UserRoute;
+  '/admin/courses/manage': typeof AdminCoursesManageRoute;
 }
 export interface FileRoutesById {
-  __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/admin': typeof AdminRouteWithChildren
-  '/courses': typeof CoursesRoute
-  '/instructor': typeof InstructorRoute
-  '/user': typeof UserRoute
-  '/admin/courses/manage': typeof AdminCoursesManageRoute
+  __root__: typeof rootRouteImport;
+  '/': typeof IndexRoute;
+  '/admin': typeof AdminRouteWithChildren;
+  '/courses': typeof CoursesRoute;
+  '/instructor': typeof InstructorRoute;
+  '/user': typeof UserRoute;
+  '/admin/courses/manage': typeof AdminCoursesManageRoute;
 }
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath
+  fileRoutesByFullPath: FileRoutesByFullPath;
   fullPaths:
     | '/'
     | '/admin'
     | '/courses'
     | '/instructor'
     | '/user'
-    | '/admin/courses/manage'
-  fileRoutesByTo: FileRoutesByTo
+    | '/admin/courses/manage';
+  fileRoutesByTo: FileRoutesByTo;
   to:
     | '/'
     | '/admin'
     | '/courses'
     | '/instructor'
     | '/user'
-    | '/admin/courses/manage'
+    | '/admin/courses/manage';
   id:
     | '__root__'
     | '/'
@@ -96,73 +96,73 @@ export interface FileRouteTypes {
     | '/courses'
     | '/instructor'
     | '/user'
-    | '/admin/courses/manage'
-  fileRoutesById: FileRoutesById
+    | '/admin/courses/manage';
+  fileRoutesById: FileRoutesById;
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  AdminRoute: typeof AdminRouteWithChildren
-  CoursesRoute: typeof CoursesRoute
-  InstructorRoute: typeof InstructorRoute
-  UserRoute: typeof UserRoute
+  IndexRoute: typeof IndexRoute;
+  AdminRoute: typeof AdminRouteWithChildren;
+  CoursesRoute: typeof CoursesRoute;
+  InstructorRoute: typeof InstructorRoute;
+  UserRoute: typeof UserRoute;
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/user': {
-      id: '/user'
-      path: '/user'
-      fullPath: '/user'
-      preLoaderRoute: typeof UserRouteImport
-      parentRoute: typeof rootRouteImport
-    }
+      id: '/user';
+      path: '/user';
+      fullPath: '/user';
+      preLoaderRoute: typeof UserRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
     '/instructor': {
-      id: '/instructor'
-      path: '/instructor'
-      fullPath: '/instructor'
-      preLoaderRoute: typeof InstructorRouteImport
-      parentRoute: typeof rootRouteImport
-    }
+      id: '/instructor';
+      path: '/instructor';
+      fullPath: '/instructor';
+      preLoaderRoute: typeof InstructorRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
     '/courses': {
-      id: '/courses'
-      path: '/courses'
-      fullPath: '/courses'
-      preLoaderRoute: typeof CoursesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
+      id: '/courses';
+      path: '/courses';
+      fullPath: '/courses';
+      preLoaderRoute: typeof CoursesRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
     '/admin': {
-      id: '/admin'
-      path: '/admin'
-      fullPath: '/admin'
-      preLoaderRoute: typeof AdminRouteImport
-      parentRoute: typeof rootRouteImport
-    }
+      id: '/admin';
+      path: '/admin';
+      fullPath: '/admin';
+      preLoaderRoute: typeof AdminRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
     '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
+      id: '/';
+      path: '/';
+      fullPath: '/';
+      preLoaderRoute: typeof IndexRouteImport;
+      parentRoute: typeof rootRouteImport;
+    };
     '/admin/courses/manage': {
-      id: '/admin/courses/manage'
-      path: '/courses/manage'
-      fullPath: '/admin/courses/manage'
-      preLoaderRoute: typeof AdminCoursesManageRouteImport
-      parentRoute: typeof AdminRoute
-    }
+      id: '/admin/courses/manage';
+      path: '/courses/manage';
+      fullPath: '/admin/courses/manage';
+      preLoaderRoute: typeof AdminCoursesManageRouteImport;
+      parentRoute: typeof AdminRoute;
+    };
   }
 }
 
 interface AdminRouteChildren {
-  AdminCoursesManageRoute: typeof AdminCoursesManageRoute
+  AdminCoursesManageRoute: typeof AdminCoursesManageRoute;
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
   AdminCoursesManageRoute: AdminCoursesManageRoute,
-}
+};
 
-const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren)
+const AdminRouteWithChildren = AdminRoute._addFileChildren(AdminRouteChildren);
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -170,16 +170,16 @@ const rootRouteChildren: RootRouteChildren = {
   CoursesRoute: CoursesRoute,
   InstructorRoute: InstructorRoute,
   UserRoute: UserRoute,
-}
+};
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>()
+  ._addFileTypes<FileRouteTypes>();
 
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
+import type { getRouter } from './router.tsx';
+import type { createStart } from '@tanstack/react-start';
 declare module '@tanstack/react-start' {
   interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
+    ssr: true;
+    router: Awaited<ReturnType<typeof getRouter>>;
   }
 }

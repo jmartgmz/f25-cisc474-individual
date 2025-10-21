@@ -1,5 +1,18 @@
-import { Controller, Get, Post, Patch, Delete, Param, Body } from '@nestjs/common';
-import { CoursesService, CourseCreateIn, CourseUpdateIn, CourseDeleteIn } from './courses.service';
+import {
+  Controller,
+  Get,
+  Post,
+  Patch,
+  Delete,
+  Param,
+  Body,
+} from '@nestjs/common';
+import {
+  CoursesService,
+  CourseCreateIn,
+  CourseUpdateIn,
+  CourseDeleteIn,
+} from './courses.service';
 
 @Controller('courses')
 export class CoursesController {

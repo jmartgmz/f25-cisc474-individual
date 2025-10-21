@@ -56,18 +56,18 @@ export class CoursesService {
           select: {
             id: true,
             name: true,
-            email: true
-          }
+            email: true,
+          },
         },
         enrollments: {
           select: {
-            id: true
-          }
-        }
-      }
+            id: true,
+          },
+        },
+      },
     });
 
-    return courses.map(course => ({
+    return courses.map((course) => ({
       id: course.id,
       title: course.title,
       description: course.description,
@@ -90,15 +90,15 @@ export class CoursesService {
           select: {
             id: true,
             name: true,
-            email: true
-          }
+            email: true,
+          },
         },
         enrollments: {
           select: {
-            id: true
-          }
-        }
-      }
+            id: true,
+          },
+        },
+      },
     });
 
     if (!course) {
@@ -135,15 +135,15 @@ export class CoursesService {
           select: {
             id: true,
             name: true,
-            email: true
-          }
+            email: true,
+          },
         },
         enrollments: {
           select: {
-            id: true
-          }
-        }
-      }
+            id: true,
+          },
+        },
+      },
     });
 
     return {
@@ -163,7 +163,7 @@ export class CoursesService {
 
   async update(updateCourseDto: CourseUpdateIn): Promise<CourseOut> {
     const { id, ...updateData } = updateCourseDto;
-    
+
     const course = await this.prisma.course.update({
       where: { id },
       data: updateData,
@@ -172,15 +172,15 @@ export class CoursesService {
           select: {
             id: true,
             name: true,
-            email: true
-          }
+            email: true,
+          },
         },
         enrollments: {
           select: {
-            id: true
-          }
-        }
-      }
+            id: true,
+          },
+        },
+      },
     });
 
     return {
@@ -206,15 +206,15 @@ export class CoursesService {
           select: {
             id: true,
             name: true,
-            email: true
-          }
+            email: true,
+          },
         },
         enrollments: {
           select: {
-            id: true
-          }
-        }
-      }
+            id: true,
+          },
+        },
+      },
     });
 
     return {

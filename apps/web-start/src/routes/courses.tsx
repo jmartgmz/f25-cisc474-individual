@@ -1,8 +1,8 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { useQuery } from '@tanstack/react-query'
-import { Suspense } from 'react'
-import { backendFetcher } from '../integrations/fetcher'
-import styles from './courses.module.css'
+import { createFileRoute } from '@tanstack/react-router';
+import { useQuery } from '@tanstack/react-query';
+import { Suspense } from 'react';
+import { backendFetcher } from '../integrations/fetcher';
+import styles from './courses.module.css';
 
 interface Course {
   id: string;
@@ -35,23 +35,25 @@ function CoursesLoadingSkeleton() {
 }
 
 function CoursesClient() {
-  const { 
-    data: courses, 
-    isLoading: loading, 
-    error 
+  const {
+    data: courses,
+    isLoading: loading,
+    error,
   } = useQuery<Array<Course>>({
     queryKey: ['courses'],
     queryFn: backendFetcher<Array<Course>>('/courses'),
-  })
+  });
 
   if (loading) return <CoursesLoadingSkeleton />;
-  
+
   if (error) {
     return (
       <div className={styles.coursesGrid}>
         <div className={styles.courseCard}>
           <div className={styles.courseTitle}>Error Loading Courses</div>
-          <div className={styles.courseInfo}>{error instanceof Error ? error.message : 'Failed to fetch courses'}</div>
+          <div className={styles.courseInfo}>
+            {error instanceof Error ? error.message : 'Failed to fetch courses'}
+          </div>
         </div>
       </div>
     );
@@ -62,7 +64,9 @@ function CoursesClient() {
       <div className={styles.coursesGrid}>
         <div className={styles.courseCard}>
           <div className={styles.courseTitle}>No Courses Found</div>
-          <div className={styles.courseInfo}>No courses are currently available.</div>
+          <div className={styles.courseInfo}>
+            No courses are currently available.
+          </div>
         </div>
       </div>
     );
@@ -126,4 +130,4 @@ function CoursesPage() {
 
 export const Route = createFileRoute('/courses')({
   component: CoursesPage,
-})
+});

@@ -9,19 +9,19 @@ export class UsersService {
     return this.prisma.user.findMany({
       include: {
         coursesAsInstructor: true,
-        enrollments: true
-      }
+        enrollments: true,
+      },
     });
   }
 
   async findInstructors() {
     return this.prisma.user.findMany({
       where: {
-        role: 'INSTRUCTOR'
+        role: 'INSTRUCTOR',
       },
       include: {
-        coursesAsInstructor: true
-      }
+        coursesAsInstructor: true,
+      },
     });
   }
 

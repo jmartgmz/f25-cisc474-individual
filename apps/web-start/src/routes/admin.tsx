@@ -1,4 +1,9 @@
-import { Link, Outlet, createFileRoute, useLocation } from '@tanstack/react-router';
+import {
+  Link,
+  Outlet,
+  createFileRoute,
+  useLocation,
+} from '@tanstack/react-router';
 import { useQuery } from '@tanstack/react-query';
 import { Suspense } from 'react';
 import { backendFetcher } from '../integrations/fetcher';
@@ -32,10 +37,10 @@ interface Course {
 }
 
 function UsersManagement() {
-  const { 
-    data: users, 
-    isLoading: loading, 
-    error 
+  const {
+    data: users,
+    isLoading: loading,
+    error,
   } = useQuery<Array<User>>({
     queryKey: ['users'],
     queryFn: backendFetcher<Array<User>>('/users'),
@@ -80,7 +85,10 @@ function UsersManagement() {
         </thead>
         <tbody>
           <tr>
-            <td colSpan={7}>Error loading users: {error instanceof Error ? error.message : 'Unknown error'}</td>
+            <td colSpan={7}>
+              Error loading users:{' '}
+              {error instanceof Error ? error.message : 'Unknown error'}
+            </td>
           </tr>
         </tbody>
       </table>
@@ -131,12 +139,11 @@ function UsersManagement() {
             <td>{user.email}</td>
             <td>{user.role}</td>
             <td>
-              {user.role === 'INSTRUCTOR' 
+              {user.role === 'INSTRUCTOR'
                 ? `${user.coursesAsInstructor?.length || 0} teaching`
-                : user.role === 'STUDENT' 
+                : user.role === 'STUDENT'
                   ? `${user.enrollments?.length || 0} enrolled`
-                  : 'N/A'
-              }
+                  : 'N/A'}
             </td>
             <td>{user.emailVerified ? 'Verified' : 'Unverified'}</td>
             <td>Edit / Delete</td>
@@ -148,10 +155,10 @@ function UsersManagement() {
 }
 
 function CoursesManagement() {
-  const { 
-    data: courses, 
-    isLoading: loading, 
-    error 
+  const {
+    data: courses,
+    isLoading: loading,
+    error,
   } = useQuery<Array<Course>>({
     queryKey: ['courses'],
     queryFn: backendFetcher<Array<Course>>('/courses'),
@@ -196,7 +203,10 @@ function CoursesManagement() {
         </thead>
         <tbody>
           <tr>
-            <td colSpan={7}>Error loading courses: {error instanceof Error ? error.message : 'Unknown error'}</td>
+            <td colSpan={7}>
+              Error loading courses:{' '}
+              {error instanceof Error ? error.message : 'Unknown error'}
+            </td>
           </tr>
         </tbody>
       </table>
@@ -273,26 +283,28 @@ function AdminPage() {
               </div>
             </div>
 
-            <Suspense fallback={
-              <table className={styles.dataTable}>
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Role</th>
-                    <th>Courses</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td colSpan={7}>Loading users...</td>
-                  </tr>
-                </tbody>
-              </table>
-            }>
+            <Suspense
+              fallback={
+                <table className={styles.dataTable}>
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Email</th>
+                      <th>Role</th>
+                      <th>Courses</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td colSpan={7}>Loading users...</td>
+                    </tr>
+                  </tbody>
+                </table>
+              }
+            >
               <UsersManagement />
             </Suspense>
           </div>
@@ -308,32 +320,34 @@ function AdminPage() {
                 <ManageButton />
               </div>
             </div>
-            <Suspense fallback={
-              <table className={styles.dataTable}>
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Code</th>
-                    <th>Instructor</th>
-                    <th>Students</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td colSpan={7}>Loading courses...</td>
-                  </tr>
-                </tbody>
-              </table>
-            }>
+            <Suspense
+              fallback={
+                <table className={styles.dataTable}>
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Title</th>
+                      <th>Code</th>
+                      <th>Instructor</th>
+                      <th>Students</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td colSpan={7}>Loading courses...</td>
+                    </tr>
+                  </tbody>
+                </table>
+              }
+            >
               <CoursesManagement />
             </Suspense>
           </div>
         </div>
       </div>
-      
+
       {/* Outlet for child routes */}
       <Outlet />
     </div>
@@ -351,9 +365,14 @@ function ManageButton() {
     <Link
       to={to}
       className={styles.actionButton}
-      title={isOpen ? 'Close course administration panel' : 'Open course administration panel'}
+      title={
+        isOpen
+          ? 'Close course administration panel'
+          : 'Open course administration panel'
+      }
     >
-      {label} <span style={{ transition: 'transform 150ms ease' }}>{chevron}</span>
+      {label}{' '}
+      <span style={{ transition: 'transform 150ms ease' }}>{chevron}</span>
     </Link>
   );
 }
