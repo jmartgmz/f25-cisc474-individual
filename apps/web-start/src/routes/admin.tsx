@@ -1,4 +1,4 @@
-import { Link, Outlet, createFileRoute } from '@tanstack/react-router';
+import { Link, Outlet, createFileRoute, useLocation } from '@tanstack/react-router';
 import { useQuery } from '@tanstack/react-query';
 import { Suspense } from 'react';
 import { backendFetcher } from '../integrations/fetcher';
@@ -273,8 +273,6 @@ function AdminPage() {
               </div>
             </div>
 
-            <div className={styles.createButton}>Create User</div>
-
             <Suspense fallback={
               <table className={styles.dataTable}>
                 <thead>
@@ -307,12 +305,9 @@ function AdminPage() {
             <div className={styles.cardHeader}>
               <div className={styles.cardTitle}>Courses</div>
               <div className={styles.cardActions}>
-                <Link to="/admin/courses/manage" className={styles.actionButton}>Manage</Link>
+                <ManageButton />
               </div>
             </div>
-
-            <div className={styles.createButton}>Create Course</div>
-
             <Suspense fallback={
               <table className={styles.dataTable}>
                 <thead>
@@ -342,6 +337,24 @@ function AdminPage() {
       {/* Outlet for child routes */}
       <Outlet />
     </div>
+  );
+}
+
+function ManageButton() {
+  const location = useLocation();
+  const isOpen = location.pathname.includes('/admin/courses/manage');
+  const to = isOpen ? '/admin' : '/admin/courses/manage';
+  const label = isOpen ? 'Close' : 'Manage';
+  const chevron = isOpen ? '▲' : '▼';
+
+  return (
+    <Link
+      to={to}
+      className={styles.actionButton}
+      title={isOpen ? 'Close course administration panel' : 'Open course administration panel'}
+    >
+      {label} <span style={{ transition: 'transform 150ms ease' }}>{chevron}</span>
+    </Link>
   );
 }
 
