@@ -34,18 +34,33 @@ enum SubmissionStatus {
 model User {
   id            String    @id @default(cuid())
   name          String?
-  email         String    @unique
+  email         String?   @unique
   emailVerified DateTime?
   role          UserRole  @default(STUDENT)
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
   
   // Relationships
+  authentications Authentication[]
   enrollments   Enrollment[]
   coursesAsInstructor Course[] @relation("CourseInstructor")
   submissions   Submission[]
   feedbackGiven Feedback[] @relation("FeedbackAuthor")
   feedbackReceived Feedback[] @relation("FeedbackRecipient")
+}
+
+model Authentication {
+  id         String   @id @default(cuid())
+  userId     String
+  provider   String   // e.g., "auth0", "google-oauth2", "github"
+  providerId String   // The ID from the provider
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  
+  // Relationships
+  user       User     @relation(fields: [userId], references: [id])
+  
+  @@unique([provider, providerId])
 }
 
 model Course {
