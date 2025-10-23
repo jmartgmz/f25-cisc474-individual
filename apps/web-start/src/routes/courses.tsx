@@ -1,7 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router';
-import { useQuery } from '@tanstack/react-query';
 import { Suspense } from 'react';
-import { backendFetcher } from '../integrations/fetcher';
+import { useApiQuery } from '../integrations/api';
 import styles from './courses.module.css';
 
 interface Course {
@@ -37,14 +36,27 @@ function CoursesLoadingSkeleton() {
 function CoursesClient() {
   const {
     data: courses,
-    isLoading: loading,
+    showLoading,
     error,
-  } = useQuery<Array<Course>>({
-    queryKey: ['courses'],
-    queryFn: backendFetcher<Array<Course>>('/courses'),
+    isAuthPending,
+  } = useApiQuery<Array<Course>>(['courses'], '/courses', {
+    scope: 'read:courses',
   });
 
-  if (loading) return <CoursesLoadingSkeleton />;
+  if (isAuthPending) {
+    return (
+      <div className={styles.coursesGrid}>
+        <div className={styles.courseCard}>
+          <div className={styles.courseTitle}>Authenticating...</div>
+          <div className={styles.courseInfo}>
+            Please wait while we verify your credentials.
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (showLoading) return <CoursesLoadingSkeleton />;
 
   if (error) {
     return (

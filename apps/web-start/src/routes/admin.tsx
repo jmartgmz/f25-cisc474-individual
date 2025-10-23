@@ -4,9 +4,9 @@ import {
   createFileRoute,
   useLocation,
 } from '@tanstack/react-router';
-import { useQuery } from '@tanstack/react-query';
 import { Suspense } from 'react';
-import { backendFetcher } from '../integrations/fetcher';
+import { useAuth0 } from '@auth0/auth0-react';
+import { useApiQuery } from '../integrations/api';
 import styles from './admin.module.css';
 
 interface User {
@@ -37,14 +37,35 @@ interface Course {
 }
 
 function UsersManagement() {
+  const { isLoading: isAuthPending } = useAuth0();
   const {
     data: users,
     isLoading: loading,
     error,
-  } = useQuery<Array<User>>({
-    queryKey: ['users'],
-    queryFn: backendFetcher<Array<User>>('/users'),
-  });
+  } = useApiQuery<Array<User>>(['admin-users'], '/users');
+
+  if (isAuthPending) {
+    return (
+      <table className={styles.dataTable}>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Enrollments</th>
+            <th>Courses Teaching</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colSpan={7}>Authenticating...</td>
+          </tr>
+        </tbody>
+      </table>
+    );
+  }
 
   if (loading) {
     return (
@@ -155,14 +176,35 @@ function UsersManagement() {
 }
 
 function CoursesManagement() {
+  const { isLoading: isAuthPending } = useAuth0();
   const {
     data: courses,
     isLoading: loading,
     error,
-  } = useQuery<Array<Course>>({
-    queryKey: ['courses'],
-    queryFn: backendFetcher<Array<Course>>('/courses'),
-  });
+  } = useApiQuery<Array<Course>>(['admin-courses'], '/courses');
+
+  if (isAuthPending) {
+    return (
+      <table className={styles.dataTable}>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Code</th>
+            <th>Instructor</th>
+            <th>Students</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colSpan={7}>Authenticating...</td>
+          </tr>
+        </tbody>
+      </table>
+    );
+  }
 
   if (loading) {
     return (

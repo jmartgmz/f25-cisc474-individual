@@ -1,9 +1,13 @@
 import { createFileRoute } from '@tanstack/react-router';
+import LoginButton from '../components/LoginButton';
 import styles from './index.module.css';
 
 function Home() {
   return (
     <div className={styles.dashboard}>
+      <div style={{ position: 'absolute', top: '10px', right: '10px' }}>
+        <LoginButton />
+      </div>
       <div className={styles.coursesSection}>
         <div className={styles.courseBox}>
           <div className={styles.courseTitle}>COURSE 1</div>

@@ -1,7 +1,6 @@
 import { Link, createFileRoute } from '@tanstack/react-router';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useState } from 'react';
-import { backendFetcher } from '../../../integrations/fetcher';
+import { useApiMutation, useApiQuery } from '../../../integrations/api';
 import styles from '../../admin.module.css';
 
 interface User {
@@ -57,40 +56,14 @@ function CreateCourseForm() {
   const [semester, setSemester] = useState('');
   const [instructorId, setInstructorId] = useState('');
 
-  const queryClient = useQueryClient();
-
-  const { data: users } = useQuery<Array<User>>({
-    queryKey: ['users'],
-    queryFn: backendFetcher<Array<User>>('/users'),
-  });
+  const { data: users } = useApiQuery<Array<User>>(['manage-users'], '/users');
 
   const instructors = users?.filter((user) => user.role === 'INSTRUCTOR') || [];
 
-  const createMutation = useMutation({
-    mutationFn: async (newCourse: CourseCreateIn) => {
-      const response = await fetch(
-        import.meta.env.VITE_BACKEND_URL + '/courses/create',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(newCourse),
-        },
-      );
-      if (!response.ok) {
-        throw new Error('Failed to create course');
-      }
-      return response.json();
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['courses'] });
-      setTitle('');
-      setDescription('');
-      setCode('');
-      setSemester('');
-      setInstructorId('');
-    },
+  const createMutation = useApiMutation({
+    path: '/courses/create',
+    method: 'POST',
+    invalidateKeys: [['courses'], ['admin-courses']],
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -107,7 +80,7 @@ function CreateCourseForm() {
       semester,
       instructorId,
       isActive: true,
-    });
+    } as any);
   };
 
   return (
@@ -247,47 +220,16 @@ function EditCourseForm() {
   const [instructorId, setInstructorId] = useState('');
   const [isActive, setIsActive] = useState(true);
 
-  const queryClient = useQueryClient();
+  const { data: courses } = useApiQuery<Array<Course>>(['manage-courses'], '/courses');
 
-  const { data: courses } = useQuery<Array<Course>>({
-    queryKey: ['courses'],
-    queryFn: backendFetcher<Array<Course>>('/courses'),
-  });
-
-  const { data: users } = useQuery<Array<User>>({
-    queryKey: ['users'],
-    queryFn: backendFetcher<Array<User>>('/users'),
-  });
+  const { data: users } = useApiQuery<Array<User>>(['manage-users'], '/users');
 
   const instructors = users?.filter((user) => user.role === 'INSTRUCTOR') || [];
 
-  const updateMutation = useMutation({
-    mutationFn: async (updateData: CourseUpdateIn) => {
-      const response = await fetch(
-        import.meta.env.VITE_BACKEND_URL + '/courses/update',
-        {
-          method: 'PATCH',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(updateData),
-        },
-      );
-      if (!response.ok) {
-        throw new Error('Failed to update course');
-      }
-      return response.json();
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['courses'] });
-      setSelectedCourseId('');
-      setTitle('');
-      setDescription('');
-      setCode('');
-      setSemester('');
-      setInstructorId('');
-      setIsActive(true);
-    },
+  const updateMutation = useApiMutation({
+    path: '/courses/update',
+    method: 'PATCH',
+    invalidateKeys: [['courses'], ['admin-courses'], ['manage-courses']],
   });
 
   const handleCourseSelect = (courseId: string) => {
@@ -318,7 +260,7 @@ function EditCourseForm() {
       semester,
       instructorId,
       isActive,
-    });
+    } as any);
   };
 
   return (
@@ -486,34 +428,12 @@ function EditCourseForm() {
 function DeleteCourseForm() {
   const [selectedCourseId, setSelectedCourseId] = useState('');
 
-  const queryClient = useQueryClient();
+  const { data: courses } = useApiQuery<Array<Course>>(['manage-courses'], '/courses');
 
-  const { data: courses } = useQuery<Array<Course>>({
-    queryKey: ['courses'],
-    queryFn: backendFetcher<Array<Course>>('/courses'),
-  });
-
-  const deleteMutation = useMutation({
-    mutationFn: async (deleteData: CourseDeleteIn) => {
-      const response = await fetch(
-        import.meta.env.VITE_BACKEND_URL + '/courses/delete',
-        {
-          method: 'DELETE',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(deleteData),
-        },
-      );
-      if (!response.ok) {
-        throw new Error('Failed to delete course');
-      }
-      return response.json();
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['courses'] });
-      setSelectedCourseId('');
-    },
+  const deleteMutation = useApiMutation({
+    path: '/courses/delete',
+    method: 'DELETE',
+    invalidateKeys: [['courses'], ['admin-courses'], ['manage-courses']],
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -530,7 +450,7 @@ function DeleteCourseForm() {
         `Are you sure you want to delete "${course.title}"? This action cannot be undone.`,
       )
     ) {
-      deleteMutation.mutate({ id: selectedCourseId });
+      deleteMutation.mutate({ id: selectedCourseId } as any);
     }
   };
 
