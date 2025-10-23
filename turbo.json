@@ -4,7 +4,7 @@
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "inputs": ["$TURBO_DEFAULT$", ".env*", "env:PORT", "env:HOST", "env:FRONTEND_URL"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*", "env:PORT", "env:HOST", "env:FRONTEND_URL", "env:AUTH0_ISSUER_URL", "env:AUTH0_AUDIENCE"],
       "outputs": [
         "build/**",
         ".vercel/**",
@@ -27,7 +27,7 @@
       "dependsOn": ["^build"],
       "cache": false,
       "persistent": true,
-      "env": ["PORT", "HOST", "FRONTEND_URL"]
+      "env": ["PORT", "HOST", "FRONTEND_URL", "AUTH0_ISSUER_URL", "AUTH0_AUDIENCE"]
     },
     "db:migrate:dev": {
       "cache": false,
